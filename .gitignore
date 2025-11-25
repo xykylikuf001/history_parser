@@ -27,4 +27,7 @@ graph_analysis_logs/
 release/
 security/*
 *.pem
- 
+
+*.zip
+*.html
+*.csv
