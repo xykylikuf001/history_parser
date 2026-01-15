@@ -102,6 +102,11 @@ def extract_bet_data(html_content):
                         ce2 = tds[4].get_text(' ', strip=True)
 
                         selections.append(f"{ce1} ({ce2})")
+                    elif len(tds) == 4:
+                        result = tds[3].get_text('', strip=True)
+                        result = result.replace("USD", "")
+                        result = result.replace("Loss", "")
+                        result = result.replace("Not paid out", "")
 
                 bet_selection = " | ".join(selections)
                 # Extract bet selection
@@ -116,10 +121,10 @@ def extract_bet_data(html_content):
                     stake = stake.replace("USD", "")
 
                 # Extract result
-                result_elem = full_prop.find('td', string=re.compile(r'Result:'))
-                if result_elem:
-                    result_text = result_elem.get_text(strip=True)
-                    result = result_text.replace('Result:', '').strip()
+                # result_elem = full_prop.find('td', string=re.compile(r'Result:'))
+                # if result_elem:
+                #     result_text = result_elem.get_text(strip=True)
+                #     result = result_text.replace('Result:', '').strip()
 
 
             bet_data = {
@@ -133,7 +138,7 @@ def extract_bet_data(html_content):
                 'bet_selection': bet_selection,
                 'stake': stake,
                 'event_time': event_time,
-                # 'result': result
+                'result': result
             }
 
             bets_data.append(bet_data)
@@ -164,7 +169,7 @@ def save_to_csv(bets_data, filename='bets_data.csv'):
         'bet_selection',
         'stake',
         'event_time',
-        # 'result'
+        'result'
     ]
 
     with open(filename, 'w', newline='', encoding='utf-8') as csvfile:
@@ -199,7 +204,7 @@ if __name__ == "__main__":
         print(f"  Selection: {bet['bet_selection']}")
         print(f"  Stake: {bet['stake']}")
         print(f"  Event: {bet['event_time']}")
-        # print(f"  Result: {bet['result']}")
+        print(f"  Result: {bet['result']}")
         print()
 
     # Save to CSV
