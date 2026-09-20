@@ -31,3 +31,4 @@ security/*
 *.zip
 *.html
 *.csv
+*.json

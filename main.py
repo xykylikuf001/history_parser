@@ -183,7 +183,7 @@ def save_to_csv(bets_data, filename='bets_data.csv'):
 # Example usage with the provided HTML
 if __name__ == "__main__":
     # Read HTML content from file or variable
-    with open('history_532141847.html', 'r', encoding='utf-8') as file:
+    with open('1.html', 'r', encoding='utf-8') as file:
         html_content = file.read()
 
     # Extract data
