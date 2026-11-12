@@ -208,4 +208,4 @@ if __name__ == "__main__":
         print()
 
     # Save to CSV
-    save_to_csv(bets_data, "history_532141847.csv")
+    save_to_csv(bets_data, "data.csv")
